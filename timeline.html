@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linha do Tempo: Indústria Cultural</title>
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #0077b6;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            text-align: center;
+            color: #4a4e69;
+            margin-bottom: 40px;
+        }
+
+        .home-button {
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+            padding: 10px;
+            text-align: center;
+            background-color: #9d0208;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .home-button:hover {
+            background-color: #5c0000;
+        }
+
+        /* --- ESTILOS DA LINHA DO TEMPO --- */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #9d0208;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            z-index: 0;
+        }
+
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            z-index: 1; 
+        }
+
+        .left { left: 0; }
+        .right { left: 50%; }
+
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: #fff;
+            border: 4px solid #9d0208;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left::after { right: -13px; }
+        .right::after { left: -17px; }
+
+        .content {
+            padding: 20px 30px;
+            background-color: #fff;
+            position: relative;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            cursor: pointer; 
+            transition: all 0.3s ease;
+        }
+
+        .content h2 { margin-top: 0; color: #0077b6; }
+        .date { font-weight: bold; color: #9d0208; margin-bottom: 10px; }
+
+        /* Setas de Conexão */
+        .left .content::before {
+            content: " "; height: 0; position: absolute; top: 22px; width: 0; z-index: 1; right: -10px;
+            border: medium solid white; border-width: 10px 0 10px 10px; border-color: transparent transparent transparent white;
+        }
+        .right .content::before {
+            content: " "; height: 0; position: absolute; top: 22px; width: 0; z-index: 1; left: -10px;
+            border: medium solid white; border-width: 10px 10px 10px 0; border-color: transparent white transparent transparent;
+        }
+
+        /* Conteúdo detalhado (interativo/escondido) */
+        .details {
+            max-height: 0; overflow: hidden; padding-top: 5px; border-top: 1px dashed #eee;
+            margin-top: 10px; opacity: 0; transition: max-height 0.7s ease-in-out, opacity 0.7s;
+        }
+        .details.show { max-height: 800px; padding-top: 15px; opacity: 1; }
+
+        /* Estilo para as imagens */
+        .details img {
+            max-width: 100%; height: auto; display: block; 
+            margin: 15px auto 5px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media screen and (max-width: 768px) {
+            .timeline::after { left: 31px; }
+            .container { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .right { left: 0; }
+            .left::after, .right::after { left: 15px; right: auto; }
+            .right .content::before, .left .content::before {
+                left: -10px; right: auto; border-width: 10px 10px 10px 0; border-color: transparent white transparent transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Projeto Interativo</h1>
+    </header>
+    <a href="index.html" class="home-button">🏠 Voltar ao Menu</a>
+
+    <h2>⏳ Linha do Tempo: Indústria Cultural e Contexto Histórico Brasileiro</h2>
+    <div class="timeline">
+        
+        <div class="container left" onclick="toggleDetails(this)">
+            <div class="content">
+                <div class="date">Anos 1930</div>
+                <h2>A Voz do Estado: O Rádio e a Era Vargas</h2>
+                <p>O Rádio se profissionaliza e se torna veículo de massa. Vargas o utiliza para centralizar a informação e promover o nacionalismo.</p>
+                <div class="details">
+                    <p>Conceito Relacionado: Massificação da Cultura, Propaganda Ideológica.</p>
+                    <p>Direitos Humanos/Política: O Estado utiliza a mídia para doutrinação e unificação de ideias sob um regime autoritário (Estado Novo).</p>
+                    <img src="GetúliioRádio.jpg" alt="Getúlio Vargas discursando em uma transmissão de rádio." title="A Voz do Estado: Getúlio Vargas na Era do Rádio">
+                </div>
+            </div>
+        </div>
+
+        <div class="container right" onclick="toggleDetails(this)">
+            <div class="content">
+                <div class="date">1950 - 1960</div>
+                <h2>O Espetáculo Doméstico: Chegada da Televisão</h2>
+                <p>A TV começa a se expandir, herdando a estrutura comercial e o formato de entretenimento do rádio.</p>
+                <div class="details">
+                    <p>Conceito Relacionado: Padronização, Início da Hegemonia Audiovisual.</p>
+                    <p>Direitos Humanos/Política: Estabelecimento do modelo de concessões de rádio e TV, criando oligopólios de mídia familiar.</p>
+                    <img src= "televisao-foto.jpg" alt="Chegada da TV no Brasil" title="Primeiros aparelhos de TV no Brasil">
+                </div>
+            </div>
+        </div>
+
+        <div class="container left" onclick="toggleDetails(this)">
+            <div class="content">
+                <div class="date">1964 - 1985</div>
+                <h2>A Grande Tela Nacional: TV e Ditadura Militar</h2>
+                <p>O Regime investe pesado em telecomunicações para "integrar" o Brasil. A Indústria Cultural é usada para desviar a atenção da repressão política.</p>
+                <div class="details">
+                    <p>Conceito Relacionado: Aparelho Ideológico do Estado, Desvio de Consciência (Divertimento).</p>
+                    <p>Direitos Humanos/Política: Censura, uso da TV para a propaganda de governo.</p>
+                    <img src="roberto-marinho.jpg" alt="Líderes da Rede Globo em contexto da Ditadura Militar." title="Oligopólio de Mídia e a Ditadura Militar">
+                </div>
+            </div>
+        </div>
+
+        <div class="container right" onclick="toggleDetails(this)">
+            <div class="content">
+                <div class="date">Anos 1990 - 2000</div>
+                <h2>O Esvaziamento: Globalização e Foco no Consumo</h2>
+                <p>A censura diminui, mas a lógica mercadológica se intensifica. O entretenimento é quase unicamente voltado para o consumo.</p>
+                <div class="details">
+                    <p>Conceito Relacionado: Fetichização da Mercadoria, Pseudo-Individualidade.</p>
+                    <p>Direitos Humanos/Política: Ascensão da Indústria Fonográfica de grandes gêneros comerciais.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container left" onclick="toggleDetails(this)">
+            <div class="content">
+                <div class="date">Anos 2010 - Atualmente</div>
+                <h2>Algoritmos de Massa: A Indústria Cultural Digital</h2>
+                <p>O surgimento das plataformas de streaming e redes sociais não acaba com a Indústria Cultural; ele a refina. Algoritmos ditam o que "deve" ser consumido.</p>
+                <div class="details">
+                    <p>Conceito Relacionado: Monopólio Digital, Tirania da Semelhança.</p>
+                    <p>Direitos Humanos/Política: O debate sobre fake news e a manipulação algorítmica.</p>
+                    <img src="netflix-tera-ibope-medido_4953.jpeg" alt="Ícones de serviços de streaming e redes sociais." title="O poder dos Algoritmos de Massa">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <script>
+        function toggleDetails(element) {
+            const details = element.querySelector('.details');
+            details.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

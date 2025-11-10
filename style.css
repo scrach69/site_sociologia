@@ -1,0 +1,120 @@
+/* --- ESTILOS GERAIS E MODERNOS --- */
+:root {
+    --primary-color: #0077b6; /* Azul Escuro */
+    --secondary-color: #9d0208; /* Vermelho Alerta */
+    --background-light: #f4f4f9;
+    --text-dark: #333;
+    --shadow-subtle: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra mais destacada */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    transition: background-color 0.5s;
+    /* Adicionando um fundo gradiente sutil */
+    background: linear-gradient(135deg, #f0f0f5 0%, #ffffff 100%);
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Borda sutil na base */
+    border-bottom: 5px solid var(--secondary-color);
+}
+
+header h1 {
+    margin: 0 0 10px;
+    font-size: 3em; /* Fonte maior */
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+header p {
+    font-size: 1.3em;
+    opacity: 0.95;
+    font-weight: 400;
+}
+
+/* --- SEÇÃO DE CARDS (Ajustes de Grid) --- */
+.content-section {
+    padding: 100px 40px; /* Mais padding */
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.cards-grid {
+    display: grid;
+    /* Adaptação melhor para telas grandes e pequenas */
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+    gap: 50px; /* Mais espaçamento entre os cards */
+}
+
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-subtle);
+    transition: all 0.4s ease; /* Transição para todos os efeitos */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02); /* Efeito de elevação mais forte */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* Sombra mais profunda */
+    border-color: var(--primary-color);
+}
+
+.card h2 {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-top: 0;
+    border-bottom: 3px solid var(--secondary-color);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* --- ESTILO DO BOTÃO (Mais atraente) --- */
+.action-button {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(157, 2, 8, 0.4);
+}
+
+.action-button:hover {
+    background-color: var(--primary-color);
+    transform: scale(1.08);
+    box-shadow: 0 6px 15px rgba(0, 119, 182, 0.5);
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 900px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+    header h1 {
+        font-size: 2.2em;
+    }
+    .content-section {
+        padding: 60px 20px;
+    }
+}
